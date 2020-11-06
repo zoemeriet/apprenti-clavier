@@ -1,0 +1,40 @@
+.letters_back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.letters_letter {
+  display: inline-block;
+  width: 129px;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 6rem;
+  font-weight: 600;
+  background-color: #f4f7f9;
+  border: 2px solid #b5b8b9;
+  border-radius: 5px;
+}
+
+.letters_input,
+.letters_input:focus {
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 6rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  background-color: #f4f7f9;
+  border: 2px solid #b5b8b9;
+  border-radius: 5px;
+  outline: 0;
+}
+
+.letters_input.wrong,
+.letters_input.wrong:focus {
+  border-color: #db3213;
+}
+
+.letters_input.good,
+.letters_input.good:focus {
+  border-color: #3eb667;
+}
