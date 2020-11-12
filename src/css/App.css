@@ -1,0 +1,15 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.homepage h1 {
+  font-size: 60px;
+}
+
+.homepage_links .button {
+  margin: 0 30px;
+}

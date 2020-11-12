@@ -1,30 +1,40 @@
-.letters_back {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+.letters_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.letters_infos {
+  display: flex;
+}
+
+.letters_infos .score {
+  margin-right: 30px;
 }
 
 .letters_letter {
   display: inline-block;
   width: 129px;
+  margin: 0;
   padding: 8px 16px;
   text-align: center;
-  font-size: 6rem;
+  font-size: 80px;
   font-weight: 600;
-  background-color: #f4f7f9;
-  border: 2px solid #b5b8b9;
+  background-color: white;
+  border: 2px solid var(--color-primary);
   border-radius: 5px;
 }
 
 .letters_input,
 .letters_input:focus {
-  padding: 8px 16px;
+  margin-top: 60px;
+  padding: 8px 22px;
   text-align: center;
-  font-size: 6rem;
+  font-size: 80px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 600;
-  background-color: #f4f7f9;
-  border: 2px solid #b5b8b9;
+  background-color: white;
+  border: 2px solid var(--color-primary);
   border-radius: 5px;
   outline: 0;
 }
@@ -37,4 +47,12 @@
 .letters_input.good,
 .letters_input.good:focus {
   border-color: #3eb667;
+}
+
+.popupScore {
+  display: none;
+}
+
+.popupScore.display {
+  display: block;
 }

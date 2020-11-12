@@ -1,0 +1,8 @@
+.score {
+  font-size: 18px;
+  margin: 0;
+}
+.score span {
+  font-weight: 700;
+  color: var(--color-primary);
+}

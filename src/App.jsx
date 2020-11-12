@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import "./App.css";
+import "./css/App.css";
 import Letters from "./Letters";
+import Phrases from "./Phrases";
 
 const App = () => {
   return (
@@ -11,12 +12,20 @@ const App = () => {
         <Route path="/letters">
           <Letters />
         </Route>
+        <Route path="/phrases">
+          <Phrases />
+        </Route>
         <Route path="/">
-          <div className="container">
+          <div className="container homepage">
             <h1>Apprenti Clavier</h1>
-            <Link to="/letters" className="button">
-              Démarrer
-            </Link>
+            <div className="homepage_links">
+              <Link to="/letters" className="button">
+                Caractères
+              </Link>
+              <Link to="/phrases" className="button">
+                Phrases
+              </Link>
+            </div>
           </div>
         </Route>
       </Switch>
