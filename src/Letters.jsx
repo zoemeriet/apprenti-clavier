@@ -1,5 +1,5 @@
 // React
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 // Data
@@ -33,6 +33,8 @@ const Letters = () => {
 
   const compareLetters = (keyPress) => {
     if (keyPress.key == letter.key) {
+      const speacker = new SpeechSynthesisUtterance(letter.value);
+      speechSynthesis.speak(speacker);
       setResponse(keyPress);
       setTheme("good");
       setGoodResponses(goodResponses + 1);
@@ -56,6 +58,10 @@ const Letters = () => {
       }, 500);
     }
   };
+
+  // useEffect(() => {
+  //   speechSynthesis.speak(speacker);
+  // });
 
   return (
     <main>
