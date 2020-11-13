@@ -1,18 +1,16 @@
-.letters_header {
+.game {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 81px);
 }
 
-.letters_infos {
-  display: flex;
+.game.hide {
+  display: none;
 }
 
-.letters_infos .score {
-  margin-right: 30px;
-}
-
-.letters_letter {
+.game_model {
   display: inline-block;
   width: 129px;
   margin: 0;
@@ -25,34 +23,45 @@
   border-radius: 5px;
 }
 
-.letters_input,
-.letters_input:focus {
+.game_model.good {
+  border-color: #3eb667;
+}
+
+.game_model.--phrases {
+  width: auto;
+}
+
+.game_input,
+.game_input:focus {
   margin-top: 60px;
   padding: 8px 22px;
   text-align: center;
   font-size: 80px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 600;
+  color: var(--text-color);
   background-color: white;
   border: 2px solid var(--color-primary);
   border-radius: 5px;
   outline: 0;
 }
 
-.letters_input.wrong,
-.letters_input.wrong:focus {
+.game_input.wrong,
+.game_input.wrong:focus {
   border-color: #db3213;
 }
 
-.letters_input.good,
-.letters_input.good:focus {
+.game_input.good,
+.game_input.good:focus {
   border-color: #3eb667;
 }
 
-.popupScore {
-  display: none;
+.outgoingChars {
+  color: #3eb667;
 }
-
-.popupScore.display {
-  display: block;
+.currentChar {
+  text-decoration: underline;
+}
+.currentChar.wrong {
+  color: #db3213;
 }

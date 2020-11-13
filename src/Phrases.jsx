@@ -1,21 +1,34 @@
+// React
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import PhrasesList from "./phrasesList.js";
-import Timer from "./Timer";
-import Score from "./Score";
-import "./Phrases.css";
+import PhrasesList from "./data/phrasesList.js";
+
+// Components
+import Header from "./Header";
+import Popup from "./Popup";
+
+// Css
+import "./css/Game.css";
 
 const Phrases = () => {
-  const [phrase, setPhrase] = useState(PhrasesList[Math.floor(Math.random() * PhrasesList.length)]);
+  const phrasesKeys = Object.keys(PhrasesList);
+  const maxPhrases = 3;
+
+  const [randomKey, setRandomKey] = useState(phrasesKeys[Math.floor(Math.random() * phrasesKeys.length)]);
+  const [phrase, setPhrase] = useState(PhrasesList[randomKey]);
+
+  const [numberOfPhrases, setNumberOfPhrases] = useState(0);
   const [response, setResponse] = useState("");
   const [theme, setTheme] = useState("");
+
   const [outgoingChars, setOutgoingChars] = useState("");
   const [currentChar, setCurrentChar] = useState(phrase.charAt(0));
   const [incomingChars, setIncomingChars] = useState(phrase.substr(1));
 
   const [wrongResponses, setWrongResponses] = useState(0);
   const [goodResponses, setGoodResponses] = useState(0);
+
+  const [endGame, setEndGame] = useState(false);
 
   const getKeyPress = (event) => {
     comparePhrases(event.key);
@@ -24,6 +37,8 @@ const Phrases = () => {
 
   const comparePhrases = (keyPress) => {
     if (keyPress === currentChar) {
+      setResponse(keyPress);
+      setRandomKey(phrasesKeys[Math.floor(Math.random() * phrasesKeys.length)]);
       setTheme("");
       setGoodResponses(goodResponses + 1);
       let updatedOutgoingChars = outgoingChars;
@@ -39,13 +54,17 @@ const Phrases = () => {
 
       if (incomingChars.length === 0) {
         setTheme("good");
+        setNumberOfPhrases(numberOfPhrases + 1);
+
         setTimeout(function() {
+          stopGame();
           setTheme("");
-          setPhrase(PhrasesList[Math.floor(Math.random() * PhrasesList.length)]);
+          setResponse("");
+          setPhrase(PhrasesList[randomKey]);
           setOutgoingChars("");
           setCurrentChar(phrase.charAt(0));
           setIncomingChars(phrase.substr(1));
-        }, 1000);
+        }, 500);
       }
     } else {
       setTheme("wrong");
@@ -53,27 +72,30 @@ const Phrases = () => {
     }
   };
 
+  const stopGame = () => {
+    if (numberOfPhrases === maxPhrases) {
+      setEndGame(true);
+    }
+  };
+
   return (
-    <div className="container phrases">
-      <Link to="/" className="phrases_back">
-        Quitter le jeu
-      </Link>
-      <h1>Tapez la phrase</h1>
-      <p className={`phrases_phrase ${theme}`}>
-        <span className="outgoingChars">{outgoingChars}</span>
-        <span className={`currentChar ${theme}`}>{currentChar}</span>
-        {incomingChars}
-      </p>
-      <form>
-        <div>
-          <input name="response" type="text" value={response} className="phrases_input" autoFocus maxLength="1" size="1" onKeyPress={getKeyPress} onChange={comparePhrases} />
-        </div>
-      </form>
-      <Timer />
-      <p>Good Responses: {goodResponses}</p>
-      <p>Wrong Responses: {wrongResponses}</p>
-      <Score goodResponses={goodResponses} wrongResponses={wrongResponses} />
-    </div>
+    <main>
+      <Header goodResponses={goodResponses} wrongResponses={wrongResponses} endGame={endGame} />
+      <div className={`game container ${endGame ? "hide" : ""}`}>
+        <h1>Tapez la phrase</h1>
+        <p className={`game_model --phrases ${theme}`}>
+          <span className="outgoingChars">{outgoingChars}</span>
+          <span className={`currentChar ${theme}`}>{currentChar}</span>
+          {incomingChars}
+        </p>
+        <form>
+          <div>
+            <input name="response" type="text" value={response} className="game_input" autoFocus maxLength="1" size="1" onKeyPress={getKeyPress} onChange={comparePhrases} />
+          </div>
+        </form>
+      </div>
+      <Popup goodResponses={goodResponses} wrongResponses={wrongResponses} endGame={endGame} />
+    </main>
   );
 };
 

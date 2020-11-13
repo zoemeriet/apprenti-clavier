@@ -1,15 +1,13 @@
+// React
 import React from "react";
 import PropTypes from "prop-types";
 
+// Css
 import "./css/Score.css";
 
-const Score = (props) => {
-  const score = (props.goodResponses / (props.goodResponses + props.wrongResponses)) * 100;
-  return (
-    <p className="score">
-      <span>Score :</span> {score ? score.toFixed(2) + "%" : "0 %"}
-    </p>
-  );
+const Score = ({ goodResponses, wrongResponses }) => {
+  const score = (goodResponses / (goodResponses + wrongResponses)) * 100;
+  return <span className="score">{score ? score.toFixed(2) + "%" : "0 %"}</span>;
 };
 
 Score.propTypes = {

@@ -4,10 +4,14 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: url(../img/forme.png), url(../img/forme2.png);
+  background-repeat: no-repeat;
+  background-position: right bottom, left top;
+  background-size: auto 60%;
 }
 
 .homepage h1 {
-  font-size: 60px;
+  font-size: 70px;
 }
 
 .homepage_links .button {

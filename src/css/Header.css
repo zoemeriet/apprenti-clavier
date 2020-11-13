@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px 50px;
+}
+
+.header_infos {
+  display: flex;
+}
+
+.header_infos p {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.header_infos p span {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.header_infos .score {
+  margin-right: 30px;
+}

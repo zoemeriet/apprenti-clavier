@@ -16,15 +16,17 @@ const App = () => {
           <Phrases />
         </Route>
         <Route path="/">
-          <div className="container homepage">
-            <h1>Apprenti Clavier</h1>
-            <div className="homepage_links">
-              <Link to="/letters" className="button">
-                Caractères
-              </Link>
-              <Link to="/phrases" className="button">
-                Phrases
-              </Link>
+          <div className="homepage">
+            <div className="container">
+              <h1>Apprenti Clavier</h1>
+              <div className="homepage_links">
+                <Link to="/letters" className="button">
+                  Caractères
+                </Link>
+                <Link to="/phrases" className="button">
+                  Phrases
+                </Link>
+              </div>
             </div>
           </div>
         </Route>
