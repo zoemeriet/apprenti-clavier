@@ -12,7 +12,7 @@ import "./css/Game.css";
 
 const Phrases = () => {
   const phrasesKeys = Object.keys(PhrasesList);
-  const maxPhrases = 3;
+  const maxPhrases = 0;
 
   const [randomKey, setRandomKey] = useState(phrasesKeys[Math.floor(Math.random() * phrasesKeys.length)]);
   const [phrase, setPhrase] = useState(PhrasesList[randomKey]);

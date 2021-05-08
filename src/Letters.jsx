@@ -1,5 +1,5 @@
 // React
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 
 // Data
@@ -14,7 +14,7 @@ import "./css/Game.css";
 
 const Letters = () => {
   const charactersKeys = Object.keys(Characters);
-  const maxChars = 10;
+  const maxChars = 5;
 
   var randomKey = charactersKeys[Math.floor(Math.random() * charactersKeys.length)];
 
@@ -33,8 +33,8 @@ const Letters = () => {
 
   const compareLetters = (keyPress) => {
     if (keyPress.key == letter.key) {
-      const speacker = new SpeechSynthesisUtterance(letter.value);
-      speechSynthesis.speak(speacker);
+      // const speacker = new SpeechSynthesisUtterance(letter.value);
+      // speechSynthesis.speak(speacker);
       setResponse(keyPress);
       setTheme("good");
       setGoodResponses(goodResponses + 1);
@@ -58,10 +58,6 @@ const Letters = () => {
       }, 500);
     }
   };
-
-  // useEffect(() => {
-  //   speechSynthesis.speak(speacker);
-  // });
 
   return (
     <main>
